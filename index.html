@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', { 'packages': ['corechart'] });
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
+
+      // Create the data table.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Topping');
+      data.addColumn('number', 'Slices');
+      data.addRows([
+        ['São Paulo', 58426],
+        ['Ceará', 22847],
+        ['Rio de Janeiro', 19995],
+        ['Amazonas', 18392],
+        ['Outros', 113851]
+      ]);
+
+      // Set chart options
+      var options = {
+        'title': 'Casos confirmados no Brasil. COVID-19. 17/05/2020',
+        'width': 800,
+        'height': 800,
+        'font-color': '#000',
+        colors: ['#C5F7A5', '#ADF182', '#916CAD', '#523874', '#DC7D68', '#DC1400'],
+        is3D: true
+      };
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+  </script>
+  <style>
+    html,
+    body {
+      height: 100%;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #container {
+      width: 960px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <!--Div that will hold the pie chart-->
+  <div id="container">
+    <div id="chart_div"></div>
+  </div>
+</body>
+
+</html>
